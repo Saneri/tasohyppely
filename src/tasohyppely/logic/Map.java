@@ -2,12 +2,18 @@
 
 package tasohyppely.logic;
 
+import java.util.ArrayList;
+
 public class Map {
     private final int pituus;
     private final int korkeus;
     private final char[][] map;
+    private final ArrayList<Object> objects;
+    private final ArrayList<Block> blocks;
     
     public Map(int x, int y) {
+        objects = new ArrayList<>();
+        blocks = new ArrayList<>();
         pituus = x;
         korkeus = y;
         map = new char[x][y];
@@ -26,5 +32,19 @@ public class Map {
             }
             System.out.println("");
         }                   
+    }
+    
+    public void addBlock(int x, int y, Block block) {
+        map[x][y] = 'B';
+        blocks.add(block);
+    }
+    
+    public void addObject(int x, int y, Object object) {
+        map[x][y] = 'O';
+        objects.add(object);
+    }
+
+    public ArrayList<Object> getObjects() {
+        return objects;
     }
 }
