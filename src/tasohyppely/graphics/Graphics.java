@@ -1,11 +1,15 @@
 package tasohyppely.graphics;
 
+import tasohyppely.logic.Object;
+import tasohyppely.logic.Block;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
+import tasohyppely.logic.Game;
 
 public class Graphics {
     private static JFrame ikkuna;
@@ -13,7 +17,13 @@ public class Graphics {
     private static java.awt.Graphics2D g;
     private static final int scale = 8;
     
-    public static void init() {
+    private static ArrayList<Object> objects;
+    private static ArrayList<Block> blocks;
+    
+    public static void init(Game game) {
+        objects = game.getMap().getObjects();
+        blocks = game.getMap().getBlocks();
+        
         viewport = new Viewport();
         ikkuna = new JFrame("alahan hyppiä hyvä mies");
         ikkuna.setPreferredSize(new Dimension(800, 600));
@@ -27,6 +37,8 @@ public class Graphics {
     public static void renderFrame() {
         viewport.paint(g);
         viewport.update(g);
+        drawPlayer((int) objects.get(0).getX(),(int) objects.get(0).getY());
+        
     }
     
     public static void drawPlayer(int x, int y) {
