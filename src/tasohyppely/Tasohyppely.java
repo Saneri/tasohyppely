@@ -1,6 +1,5 @@
 package tasohyppely;
 
-import tasohyppely.graphics.Graphics;
 import tasohyppely.keyboard.KeyboardListener;
 import tasohyppely.logic.Game;
 import tasohyppely.logic.Map;
@@ -12,7 +11,7 @@ public class Tasohyppely {
         Map map = new Map(800,600);
         Game game = new Game(map);
         Player player = new Player();
-        KeyboardListener KL = new KeyboardListener(player);
+        game.getIkkuna().addKeyListener(new KeyboardListener(player));
         map.addObject(20, 20, player);
         game.start();
     }

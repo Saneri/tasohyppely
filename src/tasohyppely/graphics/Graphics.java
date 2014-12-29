@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import tasohyppely.logic.Game;
 
-public class Graphics {
+public abstract class Graphics {
     private static JFrame ikkuna;
     private static Viewport viewport;
     private static java.awt.Graphics2D g;
@@ -19,6 +19,8 @@ public class Graphics {
     
     private static ArrayList<Object> objects;
     private static ArrayList<Block> blocks;
+    
+    private Graphics() {}
     
     public static void init(Game game) {
         objects = game.getMap().getObjects();
@@ -72,5 +74,9 @@ public class Graphics {
             //drawPlayer(Player.getX(), Player.getY());
             //...
         }
+    }
+    
+    public static JFrame getIkkuna() {
+        return ikkuna;
     }
 }

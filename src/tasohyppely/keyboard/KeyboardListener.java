@@ -15,27 +15,33 @@ public class KeyboardListener implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        //throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void keyPressed(KeyEvent ke) {
-        if (ke.equals(KeyEvent.VK_KP_RIGHT)) {
-            player.setVx(2);
-        } else if (ke.equals(KeyEvent.VK_KP_LEFT)) {
-            player.setVx(-2);
-        } else if (ke.equals(KeyEvent.VK_SPACE)) {
-            player.setVy(-5);
+        switch (ke.getKeyCode()) {
+            case KeyEvent.VK_KP_RIGHT:
+                player.setVx(2);
+                break;
+                
+            case KeyEvent.VK_KP_LEFT:
+                player.setVx(-2);
+                break;
+                
+            case KeyEvent.VK_SPACE:
+                player.setVy(-5);
+                break;
         }
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        if (ke.equals(KeyEvent.VK_KP_RIGHT)) {
-            player.setVx(0);
-        } else if (ke.equals(KeyEvent.VK_KP_LEFT)) {
-            player.setVx(0);
+        switch (ke.getKeyCode()) {
+            case KeyEvent.VK_KP_RIGHT:
+            case KeyEvent.VK_KP_LEFT:
+                player.setVx(0);
+                break;
         }
     }
-    
 }

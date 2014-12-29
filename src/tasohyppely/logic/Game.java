@@ -1,6 +1,7 @@
 
 package tasohyppely.logic;
 
+import javax.swing.JFrame;
 import tasohyppely.graphics.Graphics;
 
 public class Game {
@@ -10,13 +11,12 @@ public class Game {
     
     public Game(Map map) {
         this.map = map;
+        Graphics.init(this);
     }
     
     public void start() throws InterruptedException {
-        Graphics g = new Graphics();
-        g.init(this);
         while (true) {
-            g.renderFrame();
+            Graphics.renderFrame();
             Thread.sleep(1000/60);
             map.moveObjects();
             applyGravity();
@@ -42,4 +42,7 @@ public class Game {
         return map;
     }
     
+    public JFrame getIkkuna() {
+        return Graphics.getIkkuna();
+    }
 }
