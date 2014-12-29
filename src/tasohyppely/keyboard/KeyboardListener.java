@@ -28,10 +28,12 @@ public class KeyboardListener implements KeyListener {
             case KeyEvent.VK_KP_LEFT:
                 player.setVx(-2);
                 break;
-                
+               
             case KeyEvent.VK_SPACE:
-                player.setVy(-5);
+                if (player.getVy() == 0) {
+                    player.setVy(-5);
                 break;
+                } 
         }
     }
 
